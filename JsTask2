@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 02</title>
+  </head>
+<body>
+
+  <h3>污染城市列表</h3>
+  <ul id="aqi-list">
+<!--   
+    <li>第一名：福州（样例），10</li>
+      <li>第二名：福州（样例），10</li> -->
+  </ul>
+
+<script type="text/javascript">
+
+(function () {
+  ArrDesc();
+  /*
+  在注释下方编写代码
+  遍历读取aqiData中各个城市的数据
+  将空气质量指数大于60的城市显示到aqi-list的列表中
+  */
+
+})();
+// 遍历数组，将数值大于60的城市降序排列
+function ArrDesc(aqiData){
+    var arr = [];
+    var aqiData = [
+  ["北京", 90],
+  ["上海", 50],
+  ["福州", 10],
+  ["广州", 50],
+  ["成都", 90],
+  ["西安", 100]
+];
+ var len = aqiData.length;
+
+    for(var i=0;i<len;i++){
+      if(aqiData[i][1]>=60){
+        arr.push(aqiData[i]);
+      }    
+    }
+      // console.log("大于60的城市： "+arr);
+      var arrDes = arr.sort(des);
+      console.log(arrDes);
+
+      // 节点生成
+      for(var i=0;i<arrDes.length;i++){
+        var node = document.createElement("li");
+        var text = document.createTextNode("第"+(i+1)+"名："+arrDes[i][0]
+          +": "+arrDes[i][1]);
+        node.appendChild(text);
+
+        var fatherNode = document.getElementById("aqi-list");
+        fatherNode.appendChild(node);
+
+      }
+
+}
+// 按数组的第二个值降序方法
+   function des(b,a){
+        return a[1]-b[1];
+      }
+
+</script>
+</body>
+</html>
+<!-- 二维数组的排序问题 http://blog.csdn.net/flyingpig2016/article/details/52901977 -->
+<!-- JS生成节点 http://www.jb51.net/article/27604.htm -->
